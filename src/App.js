@@ -4,22 +4,23 @@ import "./App.css";
 
 function App() {
    	const [data, setData] = useState([]);
+    console.log(`${process.env.REACT_APP_BACKEND_URL}`)
 
 	useEffect(() => {
-		fetch("$BACKEND_URL")
+		fetch(`${process.env.BACKEND_URL}`)
 		 .then((res) => res.json())
       		 .then((result) => setData(result))
       		 .catch((err) => console.log("error"));
 	}, []);
   return (
-    <div class="divTable">
+    <div className="divTable">
       {data &&
         data.map((element, index) => (
-        <div class="headRow">
-          <div class="divCell" align="center">{element.song_id}</div>
-          <div class="divCell divCellName">{element.title}</div>
-          <div class="divCell divCellName">{element.artist}</div>
-          <div class="divCell" align="center">{element.genre}</div>
+        <div className="headRow">
+          <div className="divCell" align="center">{element.song_id}</div>
+          <div className="divCell divCellName">{element.title}</div>
+          <div className="divCell divCellName">{element.artist}</div>
+          <div className="divCell" align="center">{element.genre}</div>
           </div>
         ))}
     </div>
